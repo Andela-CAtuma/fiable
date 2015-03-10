@@ -94,20 +94,21 @@ exports.list = function(req, res) {
  * List client invoice
  */
 exports.clientInvoice = function(req, res) {
+  console.log(req.client);
   var clientId = req.client.id,
       invoices = [];
-  Invoice.find().sort('-created').populate('user', 'displayName').exec(function(err, invoices) {
-    if(err){
-      return res.status(400).send({message: 'No invoice found for client'});
-    }
-    // _.extend(invoices, function(invoice, key) {
-    //   if (invoice.clientId === clientId){
-    //     console.log(invoice);
-    //     invoices.push(invoice);
-    //   }
-    //   res.json(invoices);
-    // });
-  });
+  // Invoice.find().sort('-created').populate('user', 'displayName').exec(function(err, invoices) {
+  //   if(err){
+  //     return res.status(400).send({message: 'No invoice found for client'});
+  //   }
+  //   // _.extend(invoices, function(invoice, key) {
+  //   //   if (invoice.clientId === clientId){
+  //   //     console.log(invoice);
+  //   //     invoices.push(invoice);
+  //   //   }
+  //   //   res.json(invoices);
+  //   // });
+  // });
 };
 
 /**

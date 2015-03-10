@@ -35,25 +35,25 @@ var InvoiceSchema = new Schema({
     trim: true,
     required: 'fill in Description'
   },
-  deliveryDate: {
-    type: Date,
-    required: 'must have a delivery Date'
-  },
-  qtes: {
-    type: Number,
-    trim: true,
-    required: 'cannot be blank'
-  },
-  unitPrice: {
-    type: Number,
-    trim: true,
-    required: 'cannot be blank'
-  },
-  unitTotal: {
-    type: Number,
-    trim: true,
-    required: 'cannot be blank'
-  },
+  // deliveryDate: {
+  //   type: Date,
+  //   required: 'must have a delivery Date'
+  // },
+  // qtes: {
+  //   type: Number,
+  //   trim: true,
+  //   required: 'cannot be blank'
+  // },
+  // unitPrice: {
+  //   type: Number,
+  //   trim: true,
+  //   required: 'cannot be blank'
+  // },
+  // unitTotal: {
+  //   type: Number,
+  //   trim: true,
+  //   required: 'cannot be blank'
+  // },
   total: Number,
   created: {
     type: Date,

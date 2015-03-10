@@ -10,14 +10,15 @@ module.exports = function(app) {
     .get(invoice.list);
 
   // list all invoice for each client
-  app.route('/client/:clientId/invoice')
+  app.route('/clients/:clientId/invoice')
     .get(invoice.clientInvoice)
     // .post(users.requiresLogin, invoice.create);
     .post(invoice.create);
 
-  app.route('/client/:clientId/invoice/:invoiceId')
+  app.route('/clients/:clientId/invoice/:invoiceId')
     .get(invoice.read)
-    .put(users.requiresLogin, invoice.hasAuthorization, invoice.update)
+    // .put(users.requiresLogin, invoice.hasAuthorization, invoice.update)
+    .put(invoice.update)
     .delete(users.requiresLogin, invoice.hasAuthorization, invoice.delete);
 
   // Finish by binding the client middleware
