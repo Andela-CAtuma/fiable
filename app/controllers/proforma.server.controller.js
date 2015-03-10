@@ -5,8 +5,8 @@
  */
 var mongoose = require('mongoose'),
   errorHandler = require('./errors'),
-  client = mongoose.model('Client'),
-  proforma = mongoose.model('Pinvoice'),
+  Client = mongoose.model('Client'),
+  Pinvoice = mongoose.model('Pinvoice'),
 
   _ = require('lodash');
 
@@ -14,7 +14,7 @@ var mongoose = require('mongoose'),
  * Create a  proforma
  */
 exports.create = function(req, res) {
-  var proforma = new proforma(req.body);
+  var proforma = new Pinvoice(req.body);
   proforma.user = req.user;
   proforma.client = req.client;
 
@@ -77,9 +77,9 @@ exports.delete = function(req, res) {
  * List of proforma
  */
 exports.list = function(req, res) {
-  proforma.find({
+  Pinvoice.find({
     user: req.user
-  }).sort('-created').populate('user', 'displayName').exec(function(err, profroma) {
+  }).sort('-created').populate('user', 'displayName').exec(function(err, proforma) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
@@ -94,19 +94,25 @@ exports.list = function(req, res) {
  * List client proforma
  */
 exports.clientProforma = function(req, res) {
+  console.log('client', req.client.id);
   var clientId = req.client.id,
-      proformas = [];
-  proforma.find().sort('-created').populate('user', 'displayName').exec(function(err, proformas) {
-    if(err){
-      return res.status(400).send({message: 'No proforma found for client'});
+    proformae = [];
+  Pinvoice.find().sort('-created').populate('user', 'displayName').exec(function(err, proformas) {
+        console.log('proformax', proformas);
+    if (err) {
+      return res.status(400).send({
+        message: 'No proforma found for client'
+      });
     }
-    // _.extend(proformas, function(proforma, key) {
-    //   if (proforma.clientId === clientId){
-    //     console.log(proforma);
-    //     proformas.push(proforma);
-    //   }
-    //   res.json(proformas);
-    // });
+    _.forEach(proformas, function(proforma, key) {
+      console.log('proforma', proforma);
+      if (proforma.client.toString() === clientId.toString()) {
+        console.log('proformas', proforma);
+        proformae.push(proforma);
+        console.log('proformae', proformae);
+      }
+    });
+      res.json(proformae);
   });
 };
 
@@ -114,7 +120,7 @@ exports.clientProforma = function(req, res) {
  * proforma middlewares
  */
 exports.proformaById = function(req, res, next, id) {
-  proforma.findById(id).populate('user', 'displayName').exec(function(err, proforma) {
+  Pinvoice.findById(id).populate('user', 'displayName').exec(function(err, proforma) {
     if (err) return next(err);
     if (!proforma) return next(new Error('Failed to load proforma ' + id));
     req.proforma = proforma;
@@ -123,7 +129,7 @@ exports.proformaById = function(req, res, next, id) {
 };
 
 exports.clientProformaById = function(req, res, next) {
-  client.findById(req.params.clientId).populate('user', 'displayName').exec(function(err, client) {
+  Client.findById(req.params.clientId).populate('user', 'displayName').exec(function(err, client) {
     if (err) return next(err);
     if (!client) return next(new Error('Failed to load proforma '));
     req.client = client;

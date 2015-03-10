@@ -5,8 +5,8 @@
  */
 var mongoose = require('mongoose'),
   errorHandler = require('./errors'),
-  client = mongoose.model('Client'),
-  invoice = mongoose.model('Invoice'),
+  Client = mongoose.model('Client'),
+  Invoice = mongoose.model('Invoice'),
 
   _ = require('lodash');
 
@@ -14,7 +14,7 @@ var mongoose = require('mongoose'),
  * Create a  invoice
  */
 exports.create = function(req, res) {
-  var invoice = new invoice(req.body);
+  var invoice = new Invoice(req.body);
   invoice.user = req.user;
   invoice.client = req.client;
 
@@ -77,15 +77,15 @@ exports.delete = function(req, res) {
  * List of invoice
  */
 exports.list = function(req, res) {
-  invoice.find({
+  Invoice.find({
     user: req.user
-  }).sort('-created').populate('user', 'displayName').exec(function(err, profroma) {
+  }).sort('-created').populate('user', 'displayName').exec(function(err, invoices) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.jsonp(invoice);
+      res.jsonp(invoices);
     }
   });
 };
@@ -96,7 +96,7 @@ exports.list = function(req, res) {
 exports.clientInvoice = function(req, res) {
   var clientId = req.client.id,
       invoices = [];
-  invoice.find().sort('-created').populate('user', 'displayName').exec(function(err, invoices) {
+  Invoice.find().sort('-created').populate('user', 'displayName').exec(function(err, invoices) {
     if(err){
       return res.status(400).send({message: 'No invoice found for client'});
     }
@@ -114,7 +114,7 @@ exports.clientInvoice = function(req, res) {
  * invoice middlewares
  */
 exports.invoiceById = function(req, res, next, id) {
-  invoice.findById(id).populate('user', 'displayName').exec(function(err, invoice) {
+  Invoice.findById(id).populate('user', 'displayName').exec(function(err, invoice) {
     if (err) return next(err);
     if (!invoice) return next(new Error('Failed to load invoice ' + id));
     req.invoice = invoice;
@@ -123,7 +123,7 @@ exports.invoiceById = function(req, res, next, id) {
 };
 
 exports.clientInvoiceById = function(req, res, next) {
-  client.findById(req.params.clientId).populate('user', 'displayName').exec(function(err, client) {
+  Client.findById(req.params.clientId).populate('user', 'displayName').exec(function(err, client) {
     if (err) return next(err);
     if (!client) return next(new Error('Failed to load invoice '));
     req.client = client;

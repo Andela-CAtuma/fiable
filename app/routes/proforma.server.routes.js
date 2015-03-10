@@ -6,19 +6,17 @@ module.exports = function(app) {
   var proforma = require('../../app/controllers/proforma.server.controller.js');
 
   // clients Routes
+  // list all proforma irrespective of clients
   app.route('/proforma')
-    .get(proforma.list)
-    .post(users.requiresLogin, proforma.create);
-
-  //list all proforma independent of client
-  // app.route('client/proforma')
-  //   .get(clients.clientProformaById, proforma.clientProforma);
+    .get(proforma.list);
 
   // list all proforma for each client
-  app.route('client/:clientId/proforma')
-    .get(proforma.clientProforma);
+  app.route('/clients/:clientId/proforma')
+    .get(proforma.clientProforma)
+    // .post(users.requiresLogin, proforma.create);
+    .post(proforma.create);
 
-  app.route('client/:clientId/proforma/:proformaId')
+  app.route('/clients/:clientId/proforma/:proformaId')
     .get(proforma.read)
     .put(users.requiresLogin, proforma.hasAuthorization, proforma.update)
     .delete(users.requiresLogin, proforma.hasAuthorization, proforma.delete);

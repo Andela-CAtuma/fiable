@@ -5,15 +5,17 @@
  */
 var mongoose = require('mongoose'),
   errorHandler = require('./errors'),
-  client = mongoose.model('Client'),
+  Client = mongoose.model('Client'),
   _ = require('lodash');
 
 /**
  * Create a client
  */
 exports.create = function(req, res) {
-  var client = new client(req.body);
+  console.log(req.body);
+  var client = new Client(req.body);
   client.user = req.user;
+  console.log('client', client);
 
   client.save(function(err) {
     if (err) {
@@ -73,7 +75,7 @@ exports.delete = function(req, res) {
  * List of clients
  */
 exports.list = function(req, res) {
-  client.find({user: req.user}).sort('-created').populate('user', 'displayName').exec(function(err, clients) {
+  Client.find({user: req.user}).sort('-created').populate('user', 'displayName').exec(function(err, clients) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
@@ -88,8 +90,10 @@ exports.list = function(req, res) {
 /**
  * client middleware
  */
+
 exports.clientById = function(req, res, next, id) {
-  client.findById(id).populate('user', 'displayName').exec(function(err, client) {
+  console.log('welcome here');
+  Client.findById(id).populate('user', 'displayName').exec(function(err, client) {
     if (err) return next(err);
     if (!client) return next(new Error('Failed to load client ' + id));
     req.client = client;
