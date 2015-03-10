@@ -1,0 +1,19 @@
+<section data-ng-controller="FiableopsController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Fiableops</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="fiableop in fiableops" data-ng-href="#!/fiableops/{{fiableop._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Posted on
+				<span data-ng-bind="fiableop.created | date:'medium'"></span>
+				by
+				<span data-ng-bind="fiableop.user.displayName"></span>
+			</small>
+			<h4 class="list-group-item-heading" data-ng-bind="fiableop.name"></h4>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!fiableops.$resolved || fiableops.length">
+    	No Fiableops yet, why don't you <a href="/#!/fiableops/create">create one</a>?
+    </div>
+</section>
