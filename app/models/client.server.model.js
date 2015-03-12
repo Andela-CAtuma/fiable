@@ -12,16 +12,13 @@ var mongoose = require('mongoose'),
 var ClientSchema = new Schema({
   name: {
     type: String,
-    required: 'Please fill in a client name',
     trim: true
   },
   address:{
     type: String,
-    required: 'client must have an email address'
   },
   location:{
     type: String,
-    required: 'client must have a location'
   },
   created: {
     type: Date,
