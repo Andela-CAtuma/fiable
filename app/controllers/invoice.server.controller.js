@@ -7,6 +7,7 @@ var mongoose = require('mongoose'),
   errorHandler = require('./errors'),
   Client = mongoose.model('Client'),
   Invoice = mongoose.model('Invoice'),
+  Item = mongoose.model('Item'),
 
   _ = require('lodash');
 
@@ -17,7 +18,6 @@ exports.create = function(req, res) {
   var invoice = new Invoice(req.body);
   invoice.user = req.user;
   invoice.client = req.client;
-
   invoice.save(function(err) {
     if (err) {
       return res.status(400).send({
