@@ -1,43 +1,37 @@
 'use strict';
 
 /**
- * Module dependencies.
- */
+* Module dependencies.
+*/
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 /**
- * Fiableop Schema
- */
+* Fiableop Schema
+*/
 var InvoiceSchema = new Schema({
     invoiceNo: {
         type: Number,
         trim: true,
         required: 'fill in Proforma Invoice Number'
     },
-    purchaseOrderNo: {
-        type: String,
-        trim: true,
-        required: 'fill in Purchase Order Number'
+    created: {
+        type: Date,
+        default: Date.now
     },
-    supplierNo: {
-        type: String,
-        trim: true,
-        required: 'fill in Supplier Number'
-    },
-    accountNo: {
-        type: Number,
-        trim: true,
-        required: 'Must have Account Number'
-    },
-    items: [{
+    proforma: {
         type: Schema.ObjectId,
-        ref: 'Item'
-    }],
+        ref: 'Pinvoice'
+    },
+    user: {
+        type: Schema.ObjectId,
+        ref: 'User'
+    },
     client: {
         type: Schema.ObjectId,
         ref: 'Client'
-    },
+    }
+
 });
 
 mongoose.model('Invoice', InvoiceSchema);
