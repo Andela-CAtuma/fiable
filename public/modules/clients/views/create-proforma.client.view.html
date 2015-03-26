@@ -1,0 +1,29 @@
+<section data-ng-controller="ProformaController" class="user-profile">
+    <div class="page-header">
+        <h1>New Quotation</h1>
+    </div>
+    <div class="col-md-6">
+        <form class="form-horizontal" data-ng-submit="create()" novalidate>
+            <fieldset>
+                <div class="form-group">
+                    <label class="control-label" for="quotation-No">Quotatoin No</label>
+                        <input type="text" data-ng-model="proforma.quotationNo" id="quotation" class="form-control" placeholder="Quotation No" required>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="numero">Numero</label>
+                        <input type="text" data-ng-model="proforma.numero" id="numero" class="form-control" placeholder="Numero" required>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="numero">Reference</label>
+                        <input type="text" data-ng-model="proforma.reference" id="Reference" class="form-control" placeholder="Reference" required>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary">
+                </div>
+				<div data-ng-show="error" class="text-danger">
+					<strong data-ng-bind="error"></strong>
+				</div>
+            </fieldset>
+        </form>
+    </div>
+</section>
