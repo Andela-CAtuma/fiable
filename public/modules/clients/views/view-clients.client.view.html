@@ -1,0 +1,49 @@
+<section data-ng-controller="ClientsController" data-ng-init="findOne()" class="user-profile">
+		<div class="row row-blocks pull-center">
+    <div class="col-xs-offset-2 col-xs-8 col-md-offset-3 col-md-6">
+      <p class="profile-heading"> {{clients.name}}  Profil </p>
+      <table class="table" ts-wrapper>
+        <thead>
+          <tr>
+            <th ts-criteria="Name" ts-default>Nom</th>
+            <th>{{clients.name}}</th>
+          </tr>
+          <tr>
+            <th ts-criteria="E-Mail">Address</th>
+            <th>{{clients.address}}</th>
+          </tr>
+          <tr>
+            <th ts-criteria="location">Emplacement</th>
+            <th>{{clients.location}}</th>
+          </tr>
+        </thead>
+        <br>
+        <tbody>
+          <tr>
+            <th ts-criteria="Edit Client">
+          <a >{{client.name}} edit profile </a>                  
+         </th>
+          </tr>
+        </tbody>
+      </table>
+       <div class="col-xs-offset-2 col-xs-8 col-md-offset-3 col-md-6">
+      <table class="table" ts-wrapper>
+      	<tbody>
+        	<tr>
+            <th ts-criteria="Create a Quotation"><a ui-sref="createproforma">{{client.name}} Create Quotation </a>
+            </th>
+            </tr>
+          <tr>
+            <th ts-criteria="Create a Delivery"><a ui-sref="createdelivery">{{client.name}} Create a Delivery</a>
+            </th>
+          </tr>
+          <tr>
+            <th ts-criteria="Create an Invoice"><a ui-sref="createinvoice">{{client.name}} Create an Invoice </a>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+	</div>
+</section>
