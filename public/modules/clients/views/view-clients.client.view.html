@@ -20,8 +20,8 @@
         <br>
         <tbody>
           <tr>
-            <th ts-criteria="Edit Client">
-          <a >{{client.name}} edit profile </a>                  
+            <th ts-criteria="Edit Client"><a data-ng-href="#!/clients/{{clients._id}}/edit">
+          {{client.name}} edit profile </a>                  
          </th>
           </tr>
         </tbody>
@@ -30,7 +30,7 @@
       <table class="table" ts-wrapper>
       	<tbody>
         	<tr>
-            <th ts-criteria="Create a Quotation"><a ui-sref="createproforma">{{client.name}} Create Quotation </a>
+            <th ts-criteria="Create a Quotation"><a data-ng-href="#!/clients/{{clients._id}}/proforma/create">{{client.name}} Create Quotation </a>
             </th>
             </tr>
           <tr>

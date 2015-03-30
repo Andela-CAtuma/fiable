@@ -1,8 +1,10 @@
 'use strict';
 
-angular.module('clients').controller('ProformaController', ['$scope', '$stateParams', '$location', 'Authentication', 'Clients', 'Proforma',  function ($scope, $stateParams, $location, Authentication, Clients, Proforma) {
+angular.module('clients')
+.controller('ProformaController', ['$scope', '$stateParams', '$location', 'Authentication', 'Clients', 'Proforma', function ($scope, $stateParams, $location, Authentication, Clients, Proforma) {
 	$scope.authentication = Authentication;
 	$scope.Proforma = '';
+	$scope.totalPrices = [];
 		
 // Create new clients
 	$scope.create = function() {
@@ -63,5 +65,28 @@ angular.module('clients').controller('ProformaController', ['$scope', '$statePar
 			clientId: $stateParams.clientId
 		});
 	};
-	}
+	$scope.editable = function() {
+	 $scope.quotations = [];
+	};
+
+	$scope.addRow = function(totalPrices) {
+		$scope.unitTotal = $scope.unitPrice * $scope.qtes;	
+		$scope.totalPrices.push($scope.unitTotal);
+		console.log($scope.totalPrices);
+		$scope.quotations.push({ 'description':$scope.description, 'qtes': $scope.qtes, 'unitPrice':$scope.unitPrice, 'unitTotal': $scope.unitTotal});
+		$scope.description ='';
+		$scope.qtes ='';
+		$scope.unitPrice ='';
+		$scope.calcTotal();
+	};
+
+	$scope.calcTotal = function(totalPrices) {
+		$scope.total = 0 ;
+		var totals = $scope.totalPrices ; 
+		console.log('bagg', totals);
+		angular.forEach(totals, function(total, key) {
+		$scope.total += totals[key];
+        });
+	};
+}
 ]);

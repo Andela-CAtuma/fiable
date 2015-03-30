@@ -18,7 +18,9 @@ module.exports = {
 				'public/lib/angular-ui-router/release/angular-ui-router.min.js',
 				'public/lib/angular-ui-utils/ui-utils.min.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.min.js',
-				'public/lib/angular-translate/angular-translate.js'
+				'public/lib/angular-translate/angular-translate.js',
+				'public/lib/lodash/lodash.js'
+				
 			]
 		},
 		css: 'public/dist/application.min.css',
