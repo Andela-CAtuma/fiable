@@ -12,10 +12,8 @@ var mongoose = require('mongoose'),
  * Create a client
  */
 exports.create = function(req, res) {
-  console.log(req.body);
   var client = new Client(req.body);
   client.user = req.user;
-  console.log('client', client);
 
   client.save(function(err) {
     if (err) {
@@ -93,7 +91,8 @@ exports.list = function(req, res) {
 
 exports.clientById = function(req, res, next, id) {
   console.log('welcome here');
-  Client.findById(id).populate('user', 'displayName').exec(function(err, client) {
+  console.log('params', req.params.clientId);
+  Client.findOne({_id: req.params.clientId}).populate('user', 'displayName').exec(function(err, client) {
     if (err) return next(err);
     if (!client) return next(new Error('Failed to load client ' + id));
     req.client = client;
