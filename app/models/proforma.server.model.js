@@ -20,37 +20,37 @@ var PinvoiceSchema = new Schema({
     trim: true,
     required: 'fill in numero'
   },
-  reference: {
-    type: String
-  },
-  description: [{
-    type: String,
-    trim: true,
-    required: 'fill in description'
-  }],
-  qtes: [{
-    type: Number,
-    trim: true,
-    required: 'cannot be blank'
-  }],
-  unitPrice: [{
-    type: Number,
-    trim: true,
-    required: 'cannot be blank'
-  }],
-  unitTotal: [{
-    type: Number,
-    trim: true,
-    required: 'cannot be blank'
-  }],
-  created: {
-    type: Date,
-    default: Date.now
-  },
-  user: {
-    type: Schema.ObjectId,
-    ref: 'User'
-  },
+  // reference: {
+  //   type: String
+  // },
+  // description: [{
+  //   type: String,
+  //   trim: true,
+  //   required: 'fill in description'
+  // }],
+  // qtes: [{
+  //   type: Number,
+  //   trim: true,
+  //   required: 'cannot be blank'
+  // }],
+  // unitPrice: [{
+  //   type: Number,
+  //   trim: true,
+  //   required: 'cannot be blank'
+  // }],
+  // unitTotal: [{
+  //   type: Number,
+  //   trim: true,
+  //   required: 'cannot be blank'
+  // }],
+  // created: {
+  //   type: Date,
+  //   default: Date.now
+  // },
+  // user: {
+  //   type: Schema.ObjectId,
+  //   ref: 'User'
+  // },
   client: {
         type: Schema.ObjectId,
         ref: 'Client'

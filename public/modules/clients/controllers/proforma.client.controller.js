@@ -8,16 +8,15 @@ angular.module('clients').controller('ProformaController', ['$scope', '$statePar
 	$scope.create = function() {
 		
 		// Create new Fiableop object
-		var Proforma = new Proforma ({
-			name: this.client.name,
-			address: this.client.address,
-			location: this.client.location
+		var proforma = new Proforma ({
+			quotationNo: 1234,
+			numero: 34234
 		});
 
 		// Redirect after save
-		Proforma.$save(function(response) {
-			$location.path('Proforma/' + response._id);
-
+		proforma.$save({clientId: $stateParams.clientId},function(response) {
+			// $location.path('Proforma/' + response._id);
+			console.log(response);
 			// Clear form fields
 			$scope.Proforma = '';
 		}, function(errorResponse) {
