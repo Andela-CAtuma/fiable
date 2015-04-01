@@ -40,18 +40,27 @@ angular.module('clients')
 		
 		// Create new Fiableop object
 		var proforma = new Proforma ($scope.proforma);
-			console.log(proforma);
 			proforma.quotations = $scope.quotations;
 			proforma.total = $scope.total;
-			proforma.client = clientId
+			// proforma.client = clientId;
 	 		console.log('proforma', proforma);
 
 
 
-		// Redirect after save
-		proforma.$save(function(response) {
-          $location.path('clients/'+ clientId +'/proforma');
+// 		// Redirect after save
+// 		proforma.$save(function(response) {
+//           $location.path('clients/'+ clientId +'/proforma');
 			
+// // =======
+// 		var proforma = new Proforma ({
+// 			quotationNo: 1234,
+// 			numero: 34234
+// 		});
+
+		// Redirect after save
+		proforma.$save({clientId: $stateParams.clientId},function(response) {
+			// $location.path('Proforma/' + response._id);
+			console.log(response);
 			// Clear form fields
 			$scope.proforma = '';
 		}, function(errorResponse) {
