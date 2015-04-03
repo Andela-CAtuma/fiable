@@ -23,7 +23,7 @@ var PinvoiceSchema = new Schema({
   reference: {
     type: String
   },
-  quotation: [{
+  quotations: [{
 
      description: {
       type: String,
@@ -33,23 +33,23 @@ var PinvoiceSchema = new Schema({
     qtes: {
       type: Number,
       trim: true,
-      required: 'cannot be blank'
+      required: 'qtes cannot be blank'
     },
     unitPrice: {
       type: Number,
       trim: true,
-      required: 'cannot be blank'
+      required: 'unit price cannot be blank'
     },
     unitTotal: {
       type: Number,
       trim: true,
-      required: 'cannot be blank'
+      required: 'unit total cannot be blank'
     }
   }],
-  Total: {
+  total: {
       type: Number,
       trim: true,
-      required: 'cannot be blank'
+      required: 'total cannot be blank'
     },
   created: {
     type: Date,

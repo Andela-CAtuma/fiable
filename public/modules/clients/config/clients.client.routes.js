@@ -32,14 +32,14 @@ angular.module('clients').config(['$stateProvider',
 		state('viewproforma', {
 			url: '/clients/:clientId/proforma/:proformaId',
 			templateUrl: 'modules/clients/views/view-proforma.client.view.html'
+		}).
+		state('createinvoice', {
+			url: '/clients/:clientId/proforma/:proformaId/invoice/create',
+			templateUrl: 'modules/clients/views/create-invoice.client.view.html'
+		}).
+		state('viewinvoice', {
+			url: '/clients/:clientId/proforma/:proformaId/invoice/:invoiceId',
+			templateUrl: 'modules/clients/views/view-invoice.client.view.html'
 		});
-		// state('createdelivery', {
-		// 	url: '/clients/:clientId/delivery/create',
-		// 	templateUrl: 'modules/clients/views/create-delivery.client.view.html'
-		// }).
-		// state('createinvoice', {
-		// 	url: '/clients/:clientId/proforma/:proformaId/invoice/create',
-		// 	templateUrl: 'modules/clients/views/create-invoice.client.view.html'
-		// });
 	}
 ]);

@@ -1,0 +1,73 @@
+<section data-ng-controller="ProformaController" data-ng-init="findOne()" class="user-profile">
+		<div class="row row-blocks pull-center">
+    <div class="col-xs-offset-2 col-xs-8 col-md-offset-3 col-md-6">
+      <p class="heading">QuotationNo: {{proforma.quotationNo}}</p>
+      <br>
+      <table class="table" ts-wrapper>
+        <thead>
+          <tr>
+            <th ts-criteria="Name" ts-default>Numero</th>
+            <th>{{proforma.numero}}</th>
+          </tr>
+          <tr>
+            <th ts-criteria="location">Date</th>
+            <th>{{proforma.created  | date:'medium'}}</th>
+          </tr>
+          <tr>
+            <th ts-criteria="E-Mail">Reference</th>
+            <th>{{proforma.reference}}</th>
+          </tr>
+        </thead>
+        <br>
+      </table>
+      <table class="table" data-ng-init="editable()">
+    <tr>
+        <th>Description
+        </th>
+        <th>qtes
+        </th>
+        <th>Unit Price
+        </th>
+        <th>Unit Total
+        </th>
+    </tr>
+    <tr ng-repeat="quotation in proforma.quotations">
+        <td>{{quotation.description}}
+        </td>
+        <td>{{quotation.qtes}}
+        </td>
+        <td>{{quotation.unitPrice}}
+        </td>
+        <td>{{quotation.unitTotal}}
+        </td>
+    </tr>
+    <tr>
+        <th><tr></tr></th>
+    </tr>
+    <tr><td>Total Cost</td><td>{{proforma.total}}
+        </td>
+    </tr>
+</table>
+      <button class="btn-primary" data-ng-click="toggler()" data-ng-hide="btnToggler">Create Invoice</button>
+      <div class="col-xs-offset-2 col-xs-8 col-md-offset-3 col-md-6" data-ng-hide="toggle">
+      <table class="table" ts-wrapper>
+      	<tbody>
+        	<tr>
+            <th ts-criteria="Create a Invoivce"><a data-ng-href="#!/clients/{{proformea.client}}/proforma/{{proforma._id}}/invoice/create">Create Invoice </a>
+            </th>
+            </tr>
+          <tr>
+            <th ts-criteria="View a Invoice"><a data-ng-href="#!/clients/{{proformea.client}}/proforma/{{proforma._id}}/invoice/:invoiceId">view Invoive</a>
+            </th>
+          </tr>
+          <!-- <tr>
+            <th ts-criteria="Create an Invoice"><a ui-sref="createinvoice">Create delivery</a>
+            </th>
+          </tr> -->
+        </tbody>
+      </table>
+    </div>
+    </div>
+	</div>
+  <hr> <p class="indication">LE RESPONSABLE</p>
+</section>

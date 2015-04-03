@@ -87,3 +87,11 @@ a:hover {
     padding: 10px 80px;
     line-height: 2em;
 }
+
+.indication {
+    float: right;
+    text-decoration: underline; 
+}
+.heading{
+    text-decoration: underline; 
+}

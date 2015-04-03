@@ -1,0 +1,19 @@
+<section data-ng-controller="ProformaController" data-ng-init="find()" class="user-profile">
+    <div class="page-header">
+        <h1>Quotations</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="proformea in proforma" data-ng-href="#!/clients/{{proformea.client}}/proforma/{{proformea._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Created
+				<span data-ng-bind="proformea.created | date:'medium'"></span>
+				By
+				<span data-ng-bind="proformea.user.displayName"></span>
+			</small>
+			<h4 class="list-group-item-heading" data-ng-bind="proformea.quotationNo"></h4>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!proforma.$resolved || proforma.length">
+    	No quotations yet, why don't you <a ui-sref="createproforma">create one</a>?
+    </div>
+</section>

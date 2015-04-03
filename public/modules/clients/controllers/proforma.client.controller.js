@@ -4,6 +4,7 @@ angular.module('clients')
 .controller('ProformaController', ['$scope', '$stateParams', '$location', 'Authentication', 'Clients', 'Proforma', function ($scope, $stateParams, $location, Authentication, Clients, Proforma) {
 	$scope.authentication = Authentication;
 	$scope.totalPrices = [];
+	$scope.toggle = true;
 		
 // Create new proforma
 
@@ -42,24 +43,11 @@ angular.module('clients')
 		var proforma = new Proforma ($scope.proforma);
 			proforma.quotations = $scope.quotations;
 			proforma.total = $scope.total;
-			// proforma.client = clientId;
 	 		console.log('proforma', proforma);
-
-
-
-// 		// Redirect after save
-// 		proforma.$save(function(response) {
-//           $location.path('clients/'+ clientId +'/proforma');
-			
-// // =======
-// 		var proforma = new Proforma ({
-// 			quotationNo: 1234,
-// 			numero: 34234
-// 		});
 
 		// Redirect after save
 		proforma.$save({clientId: $stateParams.clientId},function(response) {
-			// $location.path('Proforma/' + response._id);
+			$location.path('viewproforma');
 			console.log(response);
 			// Clear form fields
 			$scope.proforma = '';
@@ -96,15 +84,23 @@ angular.module('clients')
 
 	// Find a list of Proforma
 	$scope.find = function() {
-		$scope.proforma = Proforma.query();
+		$scope.proforma = Proforma.query({clientId: $stateParams.clientId});
+		console.log('list', $scope.proforma);
 	};
 
 	// Find existing Proforma
 	$scope.findOne = function() {
 		$scope.proforma = Proforma.get({ 
-			clientId: $stateParams.clientId
+			clientId: $stateParams.clientId,
+			proformaId: $stateParams.proformaId
 		});
+		console.log('item', $scope.proforma);
+
 	};
-		
+
+	$scope.toggler = function() {
+		$scope.toggle = false;
+		$scope.btnToggler = true;
+	};
 }
 ]);
