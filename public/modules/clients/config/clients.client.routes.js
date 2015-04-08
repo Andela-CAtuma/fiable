@@ -37,6 +37,10 @@ angular.module('clients').config(['$stateProvider',
 			url: '/clients/:clientId/proforma/:proformaId/invoice/create',
 			templateUrl: 'modules/clients/views/create-invoice.client.view.html'
 		}).
+		state('invoices', {
+			url: '/clients/:clientId/proforma/:proformaId/invoices',
+			templateUrl: 'modules/clients/views/list-invoice.client.view.html'
+		}).
 		state('viewinvoice', {
 			url: '/clients/:clientId/proforma/:proformaId/invoice/:invoiceId',
 			templateUrl: 'modules/clients/views/view-invoice.client.view.html'

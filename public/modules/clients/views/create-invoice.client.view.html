@@ -1,21 +1,21 @@
-<section data-ng-controller="ProformaController" class="user-profile">
+<section data-ng-controller="InvoiceController" class="user-profile">
     <div class="page-header">
-        <h1>New Quotation</h1>
+        <h1>New Invoice</h1>
     </div>
     <div class="col-md-6">
         <form class="form-horizontal" data-ng-submit="create()" novalidate>
             <fieldset>
                 <div class="form-group">
-                    <label class="control-label" for="quotation-No">Quotatoin No</label>
-                        <input type="text" data-ng-model="proforma.quotationNo" id="quotation" class="form-control" placeholder="No/MM/YYYY" required>
+                    <label class="control-label" for="Invoice-No">Invoice No</label>
+                        <input type="text" data-ng-model="invoice.invoiceNo" id="Invoice" class="form-control" placeholder="No/MM/YYYY" required>
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="numero">Numero</label>
-                        <input type="text" data-ng-model="proforma.numero" id="numero" class="form-control" placeholder="Q-No" required>
+                        <input type="text" data-ng-model="invoice.numero" id="numero" class="form-control" placeholder="IV-No" required>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="numero">Reference</label>
-                        <input type="text" data-ng-model="proforma.reference" id="Reference" class="form-control" placeholder="Reference" required>
+                    <label class="control-label" for="numero">P.O.No</label>
+                        <input type="text" data-ng-model="invoice.pon" id="Reference" class="form-control" placeholder="P.O.N: 267-5005940.0" required>
                 </div>
                 <div class="form-group">
                     <input type="submit" class="btn btn-primary">
@@ -37,14 +37,14 @@
         <th>Unit Total
         </th>
     </tr>
-    <tr ng-repeat="quotation in quotations">
-        <td>{{quotation.description}}
+    <tr ng-repeat="receipt in receipts">
+        <td>{{receipt.description}}
         </td>
-        <td>{{quotation.qtes}}
+        <td>{{receipt.qtes}}
         </td>
-        <td>{{quotation.unitPrice}}
+        <td>{{receipt.unitPrice}}
         </td>
-        <td>{{quotation.unitTotal}}
+        <td>{{receipt.unitTotal}}
         </td>
     </tr>
     <tr>

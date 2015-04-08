@@ -11,9 +11,19 @@ var mongoose = require('mongoose'),
 */
 var InvoiceSchema = new Schema({
     invoiceNo: {
-        type: Number,
+        type: String,
         trim: true,
-        required: 'fill in Proforma Invoice Number'
+        required: 'fill in Invoice Number'
+    },
+    pon: {
+        type: String,
+        trim: true,
+        required: 'fill in Purchase Order Number'
+    },
+    numero: {
+        type: String,
+        trim: true,
+        required: 'fill in numero'
     },
     created: {
         type: Date,

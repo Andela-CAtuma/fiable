@@ -11,7 +11,7 @@
           </tr>
           <tr>
             <th ts-criteria="location">Date</th>
-            <th>{{proforma.created  | date:'medium'}}</th>
+            <th>{{proforma.created  | date:'short'}}</th>
           </tr>
           <tr>
             <th ts-criteria="E-Mail">Reference</th>
@@ -48,22 +48,18 @@
         </td>
     </tr>
 </table>
-      <button class="btn-primary" data-ng-click="toggler()" data-ng-hide="btnToggler">Create Invoice</button>
+      <button class="btn-primary" data-ng-click="toggler()" data-ng-hide="btnToggler">Invoice</button>
       <div class="col-xs-offset-2 col-xs-8 col-md-offset-3 col-md-6" data-ng-hide="toggle">
       <table class="table" ts-wrapper>
       	<tbody>
         	<tr>
-            <th ts-criteria="Create a Invoivce"><a data-ng-href="#!/clients/{{proformea.client}}/proforma/{{proforma._id}}/invoice/create">Create Invoice </a>
+            <th ts-criteria="Create a Invoivce"><a data-ng-href="#!/clients/{{proforma.client}}/proforma/{{proforma._id}}/invoice/create">Create Invoice </a>
             </th>
             </tr>
           <tr>
-            <th ts-criteria="View a Invoice"><a data-ng-href="#!/clients/{{proformea.client}}/proforma/{{proforma._id}}/invoice/:invoiceId">view Invoive</a>
+            <th ts-criteria="View a Invoice"><a data-ng-href="#!/clients/{{proforma.client}}/proforma/{{proforma._id}}/invoices">view Invoives</a>
             </th>
           </tr>
-          <!-- <tr>
-            <th ts-criteria="Create an Invoice"><a ui-sref="createinvoice">Create delivery</a>
-            </th>
-          </tr> -->
         </tbody>
       </table>
     </div>
