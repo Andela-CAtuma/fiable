@@ -40,8 +40,8 @@ angular.module('clients')
 	$scope.create = function() {
    
 		var invoice = new Invoice ($scope.invoice);
-			invoice.receipts = $scope.receipts;
-			invoice.total = $scope.total;
+			// invoice.receipts = $scope.receipts;
+			// invoice.total = $scope.total;
 	 		console.log('invoice', invoice);
 
 		// Redirect after save
