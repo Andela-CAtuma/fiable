@@ -7,7 +7,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 /**
- * Fiableop Schema
+ *Proforma Schema
  */
 var PinvoiceSchema = new Schema({
   quotationNo: {

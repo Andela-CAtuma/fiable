@@ -47,7 +47,7 @@ angular.module('clients')
 		// Redirect after save
 		invoice.$save({clientId: $stateParams.clientId, 
 			proformaId: $stateParams.proformaId}, function(response) {
-			$location.path('viewinvoice');
+			$location.path('clients/' + proforma.client + '/proforma/' + proforma._id + '/invoice/' + invoice._id);
 			console.log(response);
 			// Clear form fields
 			$scope.invoice = '';

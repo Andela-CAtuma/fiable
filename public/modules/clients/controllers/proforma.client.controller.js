@@ -9,6 +9,7 @@ angular.module('clients')
 // Create new proforma
 
 	$scope.addRow = function(totalPrices) {
+		$scope.unitTotal = 0;
 		$scope.unitTotal = $scope.unitPrice * $scope.qtes;	
 		$scope.totalPrices.push($scope.unitTotal);
 		console.log($scope.totalPrices);
@@ -47,7 +48,7 @@ angular.module('clients')
 
 		// Redirect after save
 		proforma.$save({clientId: $stateParams.clientId},function(response) {
-			$location.path('viewproforma');
+			$location.path('clients/' + clients._id + '/proforma/' + proforma._id);
 			console.log(response);
 			// Clear form fields
 			$scope.proforma = '';

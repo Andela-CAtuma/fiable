@@ -24,11 +24,11 @@
     <tr>
         <th>Description
         </th>
-        <th>qtes
+        <th>QTE
         </th>
-        <th>Unit Price
+        <th>Prix Unitaire
         </th>
-        <th>Unit Total
+        <th>Unitaire Total
         </th>
     </tr>
     <tr ng-repeat="quotation in proforma.quotations">
@@ -48,6 +48,11 @@
         </td>
     </tr>
 </table>
+    <hr><p class="indication">LE RESPONSABLE</p>
+
+    <br>
+    <br>
+    <br>
       <button class="btn-primary" data-ng-click="toggler()" data-ng-hide="btnToggler">Invoice</button>
       <div class="col-xs-offset-2 col-xs-8 col-md-offset-3 col-md-6" data-ng-hide="toggle">
       <table class="table" ts-wrapper>
@@ -57,7 +62,7 @@
             </th>
             </tr>
           <tr>
-            <th ts-criteria="View a Invoice"><a data-ng-href="#!/clients/{{proforma.client}}/proforma/{{proforma._id}}/invoices">view Invoives</a>
+            <th ts-criteria="View a Invoice"><a data-ng-href="#!/clients/{{proforma.client}}/proforma/{{proforma._id}}/invoices">view Invoices</a>
             </th>
           </tr>
         </tbody>
@@ -65,5 +70,4 @@
     </div>
     </div>
 	</div>
-  <hr> <p class="indication">LE RESPONSABLE</p>
 </section>
