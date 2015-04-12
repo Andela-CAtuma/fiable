@@ -44,6 +44,18 @@ angular.module('clients').config(['$stateProvider',
 		state('viewinvoice', {
 			url: '/clients/:clientId/proforma/:proformaId/invoice/:invoiceId',
 			templateUrl: 'modules/clients/views/view-invoice.client.view.html'
+		}).
+		state('createdelivery', {
+			url: '/clients/:clientId/proforma/:proformaId/delivery/create',
+			templateUrl: 'modules/clients/views/create-delivery.client.view.html'
+		}).
+		state('deliveries', {
+			url: '/clients/:clientId/proforma/:proformaId/deliveries',
+			templateUrl: 'modules/clients/views/list-delivery.client.view.html'
+		}).
+		state('viewdelivery', {
+			url: '/clients/:clientId/proforma/:proformaId/delivery/:deliveryId',
+			templateUrl: 'modules/clients/views/view-delivery.client.view.html'
 		});
 	}
 ]);

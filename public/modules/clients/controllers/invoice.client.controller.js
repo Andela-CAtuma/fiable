@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('clients')
-.controller('InvoiceController', ['$scope', '$stateParams', '$location', 'Authentication', 'Clients', 'Proforma', 'Invoice',  function ($scope, $stateParams, $location, Authentication, Clients, Proforma, Invoice) {
+.controller('InvoiceController', ['$scope', '$stateParams', '$location', 'Authentication', 'Clients', 'Proforma', 'Invoice','Delivery',  function ($scope, $stateParams, $location, Authentication, Clients, Proforma, Invoice, Delivery) {
 	$scope.authentication = Authentication;
 	$scope.totalPrices = [];
 	$scope.toggle = true;
@@ -35,6 +35,23 @@ angular.module('clients')
 	$scope.editable = function() {
 	 $scope.receipts = [];
 
+	};
+
+	$scope.createDelivery = function() {
+   
+		var delivery = new Delivery ($scope.delivery);
+	 		console.log('delivery', delivery);
+
+		// Redirect after save
+		delivery.$save({clientId: $stateParams.clientId, 
+			proformaId: $stateParams.proformaId}, function(response) {
+			$location.path('clients/' + proforma.client + '/proforma/' + proforma._id + '/delivery/' + delivery._id);
+			console.log(response);
+			// Clear form fields
+			$scope.delivery = '';
+		}, function(errorResponse) {
+			$scope.error = errorResponse.data.message;
+		});
 	};
 
 	$scope.create = function() {
@@ -89,6 +106,13 @@ angular.module('clients')
 		console.log('invoice', $scope.invoices);
 	};
 
+	// Find a list of deliveries
+	$scope.findDelivery = function() {
+		$scope.deliveries = Delivery.query({clientId: $stateParams.clientId,
+			proformaId: $stateParams.proformaId}); 
+		console.log('deliveries', $scope.deliveries);
+	};
+
 	// Find existing invoice
 	$scope.findOne = function() {
 		$scope.proforma = Proforma.get({clientId: $stateParams.clientId,
@@ -99,6 +123,18 @@ angular.module('clients')
 			proformaId: $stateParams.proformaId,
 			invoiceId: $stateParams.invoiceId}); 
 		console.log('invoice', $scope.invoices);
+	};
+
+	// Find existing invoice
+	$scope.findOneDelivery = function() {
+		$scope.proforma = Proforma.get({clientId: $stateParams.clientId,
+			proformaId: $stateParams.proformaId}); 
+		console.log('proforma', $scope.proforma);
+
+		$scope.delivery = Delivery.query({clientId: $stateParams.clientId,
+			proformaId: $stateParams.proformaId,
+			deliveryId: $stateParams.deliveryId}); 
+		console.log('delivery', $scope.delivery);
 	};
 
 	$scope.toggler = function() {

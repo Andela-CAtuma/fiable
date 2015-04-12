@@ -9,6 +9,15 @@ table {
     padding: 0;
     margin: 0;
 }
+td a{
+    font-size: 0.75em;
+}
+td{
+    font-size: 0.65em;
+}
+th{
+    font-size: 0.8em;
+}
 .content {
     margin-top: 0;
     position: relative;
@@ -91,6 +100,7 @@ a:hover {
 .indication {
     float: right;
     text-decoration: underline; 
+    font-size: 0.9em;
 }
 .heading{
     text-decoration: underline; 
