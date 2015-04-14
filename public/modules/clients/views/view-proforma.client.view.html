@@ -1,8 +1,16 @@
 <section data-ng-controller="ProformaController" data-ng-init="findOne()" class="user-profile">
-		<div class="row row-blocks pull-center">
+  <div class="row row-blocks pull-left">
+        <h2 class="fiable-heading">FIABLE OIL SERVICES</h2>
+        <p>BP. 1055 PORT-GENTIL<br> TEL: 07 15 54 75 <br> Carrefour BANCO </p>
+  </div>
+  <div class="row row-blocks pull-right">
+       <h4 class="client-heading">CLIENT</h4>
+        <p>{{client.name}}</p>
+        <p>{{client.address}}<br>{{client.location}}</p>
+  </div>
+	<div class="row row-blocks pull-center">
     <div class="col-xs-offset-2 col-xs-8 col-md-offset-3 col-md-6">
       <p class="heading">QuotationNo: {{proforma.quotationNo}}</p>
-      <br>
       <table class="table" ts-wrapper>
         <thead>
           <tr>
@@ -48,8 +56,8 @@
         </td>
     </tr>
 </table>
-    <hr><p class="indication">LE RESPONSABLE</p>
-
+    <p class="view-footer">BP. 1055 PORT-GENTIL TEL: 07 15 54 75 Carrefour BANCO </p>
+      <p id="footer-p">No Stat. 073401 Y </p>
     <br>
     <br>
     <br>

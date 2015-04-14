@@ -95,6 +95,7 @@ angular.module('clients')
 			clientId: $stateParams.clientId,
 			proformaId: $stateParams.proformaId
 		});
+		$scope.client = Clients.get({clientId: $stateParams.clientId});
 		console.log('item', $scope.proforma);
 
 	};

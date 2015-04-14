@@ -127,6 +127,9 @@ angular.module('clients')
 
 	// Find existing invoice
 	$scope.findOneDelivery = function() {
+		$scope.client = Clients.get({clientId: $stateParams.clientId});
+		console.log('client', $scope.client);
+		
 		$scope.proforma = Proforma.get({clientId: $stateParams.clientId,
 			proformaId: $stateParams.proformaId}); 
 		console.log('proforma', $scope.proforma);

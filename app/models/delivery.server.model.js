@@ -13,7 +13,8 @@ var DeliverySchema = new Schema({
     deliveryNo: {
         type: String,
         trim: true,
-        required: 'fill in delivery Number'
+        required: 'fill in delivery Number',
+        unique: 'Delivery Number '
     },
     created: {
         type: Date,

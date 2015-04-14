@@ -13,7 +13,8 @@ var InvoiceSchema = new Schema({
     invoiceNo: {
         type: String,
         trim: true,
-        required: 'fill in Invoice Number'
+        required: 'fill in Invoice Number',
+        unique: 'Invoice Number exist'
     },
     pon: {
         type: String,

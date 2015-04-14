@@ -13,7 +13,8 @@ var PinvoiceSchema = new Schema({
   quotationNo: {
     type: String,
     trim: true,
-    required: 'fill in Proforma Invoice Number'
+    required: 'fill in Proforma Invoice Number',
+    unique : 'Quotation Number exist'
   },
   numero: {
     type: String,
