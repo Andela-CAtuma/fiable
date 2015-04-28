@@ -1,0 +1,29 @@
+<section data-ng-controller="InvoiceController" class="user-profile">
+    <div class="page-header">
+        <h1>New Delivery</h1>
+    </div>
+    <div class="col-md-6">
+        <form class="form-horizontal" data-ng-submit="createDelivery()" novalidate>
+            <fieldset>
+                <div class="form-group">
+                    <label class="control-label" for="Delivery-No">Delivery No</label>
+                        <input type="text" data-ng-model="delivery.deliveryNo" id="Invoice" class="form-control" placeholder="No/MM/YYYY" required>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="numero">Numero</label>
+                        <input type="text" data-ng-model="delivery.numero" id="numero" class="form-control" placeholder="IV-No" required>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="numero">P.O.No</label>
+                        <input type="text" data-ng-model="delievry.pon" id="Reference" class="form-control" placeholder="P.O.N: 267-5005940.0" required>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary">
+                </div>
+				<div data-ng-show="error" class="text-danger">
+					<strong data-ng-bind="error"></strong>
+				</div>
+            </fieldset>
+        </form>
+    </div>
+</section>

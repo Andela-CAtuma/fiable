@@ -98,6 +98,23 @@ var mongoose = require('mongoose'),
  * delivery middlewares
  */
 
+exports.uniqueDeliveryNumber = function(req, res, next){
+   var deliveryNo = req.body.deliveryNo;
+   Delivery.find().exec(function(err, delieveries){
+    console.log('delivery', delieveries);
+    _.forEach(delieveries, function(delivery, key){
+      if(deliveryNo === delivery.deliveryNo){
+        console.log('error');
+          return res.status(403).send({
+            message: 'Delivery Number Exist'
+          });
+      }
+    });
+   });
+   next();
+
+ };
+
   exports.deliveryById = function(req, res, next, id) {
     Delivery.findById(id).populate('user', 'displayName').exec(function(err, delivery) {
       if (err) return next(err);

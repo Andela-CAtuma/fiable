@@ -45,8 +45,7 @@ angular.module('clients')
 		// Redirect after save
 		delivery.$save({clientId: $stateParams.clientId, 
 			proformaId: $stateParams.proformaId}, function(response) {
-			$location.path('clients/' + proforma.client + '/proforma/' + proforma._id + '/delivery/' + delivery._id);
-			console.log(response);
+			$location.path('clients/' + $stateParams.clientId + '/proforma/' + $stateParams.proformaId + '/delivery');
 			// Clear form fields
 			$scope.delivery = '';
 		}, function(errorResponse) {
@@ -57,15 +56,12 @@ angular.module('clients')
 	$scope.create = function() {
    
 		var invoice = new Invoice ($scope.invoice);
-			// invoice.receipts = $scope.receipts;
-			// invoice.total = $scope.total;
 	 		console.log('invoice', invoice);
 
 		// Redirect after save
 		invoice.$save({clientId: $stateParams.clientId, 
 			proformaId: $stateParams.proformaId}, function(response) {
-			$location.path('clients/' + proforma.client + '/proforma/' + proforma._id + '/invoice/' + invoice._id);
-			console.log(response);
+			$location.path('clients/' + $stateParams.clientId + '/proforma/' + $stateParams.proformaId + '/invoice');
 			// Clear form fields
 			$scope.invoice = '';
 		}, function(errorResponse) {

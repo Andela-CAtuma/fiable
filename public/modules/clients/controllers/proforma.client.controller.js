@@ -48,7 +48,7 @@ angular.module('clients')
 
 		// Redirect after save
 		proforma.$save({clientId: $stateParams.clientId},function(response) {
-			$location.path('clients/' + clients._id + '/proforma/' + proforma._id);
+			$location.path('clients/' + $stateParams.clientId + '/proforma');
 			console.log(response);
 			// Clear form fields
 			$scope.proforma = '';

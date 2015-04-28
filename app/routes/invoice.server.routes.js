@@ -11,7 +11,7 @@ module.exports = function(app) {
   // list all invoice for each client
   app.route('/clients/:clientId/proforma/:proformaId/invoice')
     .get(invoice.list)
-    .post(users.requiresLogin, invoice.create);
+    .post(users.requiresLogin, invoice.uniqueInvoiceNumber, invoice.create);
     // .post(invoice.create);
 
   app.route('/clients/:clientId/proforma/:proformaId/invoice/:invoiceId')

@@ -11,7 +11,7 @@ module.exports = function(app) {
   // list all delivery for each client
   app.route('/clients/:clientId/proforma/:proformaId/delivery')
     .get(delivery.list)
-    .post(users.requiresLogin, delivery.create);
+    .post(users.requiresLogin, delivery.uniqueDeliveryNumber, delivery.create);
     // .post(delivery.create);
 
   app.route('/clients/:clientId/proforma/:proformaId/delivery/:deliveryId')

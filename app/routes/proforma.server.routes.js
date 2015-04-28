@@ -14,7 +14,7 @@ module.exports = function(app) {
   // list and create proforma
   app.route('/clients/:clientId/proforma')
     .get(proforma.clientProforma)
-    .post(users.requiresLogin, proforma.create);
+    .post(users.requiresLogin, proforma.uniqueProformaName, proforma.create);
     // .post(proforma.create);
 
   app.route('/clients/:clientId/proforma/:proformaId')

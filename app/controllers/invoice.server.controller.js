@@ -98,6 +98,23 @@ var mongoose = require('mongoose'),
  * invoice middlewares
  */
 
+exports.uniqueInvoiceNumber = function(req, res, next){
+   var invoiceNo = req.body.invoiceNo;
+   Invoice.find().exec(function(err, invoices){
+    console.log('invoice', invoices);
+    _.forEach(invoices, function(invoice, key){
+      if(invoiceNo === invoice.invoiceNo){
+        console.log('error');
+          return res.status(403).send({
+            message: 'Invoice Number Exist'
+          });
+      }
+    });
+   });
+   next();
+
+ };
+
   exports.invoiceById = function(req, res, next, id) {
     Invoice.findById(id).populate('user', 'displayName').exec(function(err, invoice) {
       if (err) return next(err);
