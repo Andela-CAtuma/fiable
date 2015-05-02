@@ -9,6 +9,15 @@ table {
     padding: 0;
     margin: 0;
 }
+td a{
+    font-size: 0.9em;
+}
+td{
+    font-size: 0.8em;
+}
+th{
+    font-size: 0.8em;
+}
 .content {
     margin-top: 0;
     position: relative;
@@ -86,4 +95,14 @@ a:hover {
     display: inline-block;
     padding: 10px 80px;
     line-height: 2em;
+}
+.view-footer{
+ margin-top: 15%;   
+}
+.client-heading, .heading{
+    text-decoration: underline; 
+}
+#footer-p, .view-footer{
+    text-align: center;
+    font-size: 0.5em;
 }

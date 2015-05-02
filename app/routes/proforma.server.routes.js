@@ -6,16 +6,16 @@ module.exports = function(app) {
   var clients = require('../../app/controllers/clients.server.controller.js');
   var proforma = require('../../app/controllers/proforma.server.controller.js');
 
-  // clients Routes
+  //Proforma Routes
   // list all proforma irrespective of clients
   app.route('/proforma')
     .get(proforma.list);
 
-  // list all proforma for each client
+  // list and create proforma
   app.route('/clients/:clientId/proforma')
     .get(proforma.clientProforma)
-    // .post(users.requiresLogin, proforma.create);
-    .post(proforma.create);
+    .post(users.requiresLogin, proforma.uniqueProformaName, proforma.create);
+    // .post(proforma.create);
 
   app.route('/clients/:clientId/proforma/:proformaId')
     .get(proforma.read)
@@ -23,7 +23,7 @@ module.exports = function(app) {
     .delete(users.requiresLogin, proforma.hasAuthorization, proforma.delete);
 
   // Finish by binding the client middleware
-  app.param('clientId', clients.clientById);
+  app.param('clientId', proforma.clientProformaById);
   app.param('proformaId', proforma.proformaById);
 
 };

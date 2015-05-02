@@ -1,0 +1,85 @@
+<section data-ng-controller="ProformaController" data-ng-init="findOne()" class="user-profile">
+  <div class="row row-blocks pull-left">
+        <h2 class="fiable-heading">FIABLE OIL SERVICES</h2>
+        <p>BP. 1055 PORT-GENTIL<br> TEL: 07 15 54 75 <br> Carrefour BANCO </p>
+  </div>
+  <div class="row row-blocks pull-right">
+       <h4 class="client-heading">CLIENT</h4>
+        <p>{{client.name}}</p>
+        <p>{{client.address}}<br>{{client.location}}</p>
+  </div>
+	<div class="row row-blocks pull-center">
+    <div class="col-xs-offset-2 col-xs-8 col-md-offset-3 col-md-6">
+      <p class="heading">QuotationNo: {{proforma.quotationNo}}</p>
+      <table class="table" ts-wrapper>
+        <thead>
+          <tr>
+            <th ts-criteria="Name" ts-default>Numero</th>
+            <th>{{proforma.numero}}</th>
+          </tr>
+          <tr>
+            <th ts-criteria="location">Date</th>
+            <th>{{proforma.created  | date:'short'}}</th>
+          </tr>
+          <tr>
+            <th ts-criteria="E-Mail">Reference</th>
+            <th>{{proforma.reference}}</th>
+          </tr>
+        </thead>
+        <br>
+      </table>
+      <table class="table" data-ng-init="editable()">
+    <tr>
+        <th>Description
+        </th>
+        <th>QTE
+        </th>
+        <th>Prix Unitaire
+        </th>
+        <th>Unitaire Total
+        </th>
+    </tr>
+    <tr ng-repeat="quotation in proforma.quotations">
+        <td>{{quotation.description}}
+        </td>
+        <td>{{quotation.qtes}}
+        </td>
+        <td>{{quotation.unitPrice}}
+        </td>
+        <td>{{quotation.unitTotal}}
+        </td>
+    </tr>
+    <tr>
+        <th><tr></tr></th>
+    </tr>
+    <tr><td>Total Cost</td><td>{{proforma.total}}
+        </td>
+    </tr>
+</table>
+    <p class="view-footer">BP. 1055 PORT-GENTIL TEL: 07 15 54 75 Carrefour BANCO </p>
+      <p id="footer-p">No Stat. 073401 Y </p>
+    <br>
+    <br>
+    <br>
+      <button class="btn-primary" data-ng-click="toggler()" data-ng-hide="btnToggler">Invoice/Delivery</button>
+      <div class="col-xs-offset-2 col-xs-8 col-md-offset-3 col-md-6" data-ng-hide="toggle">
+      <table class="table" ts-wrapper>
+      	<tbody>
+        	<tr>
+            <td><a data-ng-href="#!/clients/{{proforma.client}}/proforma/{{proforma._id}}/invoice/create">Create Invoice </a>
+            </td>
+            <td><a data-ng-href="#!/clients/{{proforma.client}}/proforma/{{proforma._id}}/invoices">View Invoices</a>
+            </td>
+            </tr>
+          <tr>
+            <td><a data-ng-href="#!/clients/{{proforma.client}}/proforma/{{proforma._id}}/delivery/create">Create Delivery </a>
+            </td>
+            <td><a data-ng-href="#!/clients/{{proforma.client}}/proforma/{{proforma._id}}/deliveries">View Deliveries</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+	</div>
+</section>

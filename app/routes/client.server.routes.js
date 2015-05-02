@@ -7,7 +7,7 @@ module.exports = function(app) {
  // clients Routes
  app.route('/clients')
    .get(clients.list)
-   .post(users.requiresLogin, clients.create);
+   .post(users.requiresLogin, clients.uniqueClientName, clients.create);
    // .post(clients.create);
 
  app.route('/clients/:clientId')

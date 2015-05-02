@@ -32,14 +32,30 @@ angular.module('clients').config(['$stateProvider',
 		state('viewproforma', {
 			url: '/clients/:clientId/proforma/:proformaId',
 			templateUrl: 'modules/clients/views/view-proforma.client.view.html'
+		}).
+		state('createinvoice', {
+			url: '/clients/:clientId/proforma/:proformaId/invoice/create',
+			templateUrl: 'modules/clients/views/create-invoice.client.view.html'
+		}).
+		state('invoices', {
+			url: '/clients/:clientId/proforma/:proformaId/invoices',
+			templateUrl: 'modules/clients/views/list-invoice.client.view.html'
+		}).
+		state('viewinvoice', {
+			url: '/clients/:clientId/proforma/:proformaId/invoice/:invoiceId',
+			templateUrl: 'modules/clients/views/view-invoice.client.view.html'
+		}).
+		state('createdelivery', {
+			url: '/clients/:clientId/proforma/:proformaId/delivery/create',
+			templateUrl: 'modules/clients/views/create-delivery.client.view.html'
+		}).
+		state('deliveries', {
+			url: '/clients/:clientId/proforma/:proformaId/deliveries',
+			templateUrl: 'modules/clients/views/list-delivery.client.view.html'
+		}).
+		state('viewdelivery', {
+			url: '/clients/:clientId/proforma/:proformaId/delivery/:deliveryId',
+			templateUrl: 'modules/clients/views/view-delivery.client.view.html'
 		});
-		// state('createdelivery', {
-		// 	url: '/clients/:clientId/delivery/create',
-		// 	templateUrl: 'modules/clients/views/create-delivery.client.view.html'
-		// }).
-		// state('createinvoice', {
-		// 	url: '/clients/:clientId/proforma/:proformaId/invoice/create',
-		// 	templateUrl: 'modules/clients/views/create-invoice.client.view.html'
-		// });
 	}
 ]);

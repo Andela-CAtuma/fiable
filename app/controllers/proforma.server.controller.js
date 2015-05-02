@@ -119,8 +119,26 @@ exports.clientProforma = function(req, res) {
 /**
  * proforma middlewares
  */
+
+ exports.uniqueProformaName = function(req, res, next){
+   var proformaNo = req.body.quotationNo;
+   Pinvoice.find().exec(function(err, proforma){
+    console.log('proforma', proforma);
+    _.forEach(proforma, function(proformae, key){
+      if(proformaNo === proformae.quotationNo){
+        console.log('error');
+          return res.status(403).send({
+            message: 'proforma Name Exist'
+          });
+      }
+    });
+   });
+   next();
+
+ };
+
 exports.proformaById = function(req, res, next, id) {
-  Pinvoice.findById(id).populate('user', 'displayName').exec(function(err, proforma) {
+  Pinvoice.findById(req.params.proformaId).populate('user', 'displayName').exec(function(err, proforma) {
     if (err) return next(err);
     if (!proforma) return next(new Error('Failed to load proforma ' + id));
     req.proforma = proforma;
