@@ -6,107 +6,107 @@
 var mongoose = require('mongoose'),
   errorHandler = require('./errors'),
   Client = mongoose.model('Client'),
-  Invoice = mongoose.model('Invoice'),
   Pinvoice = mongoose.model('Pinvoice'),
+  Delivery = mongoose.model('Delivery'),
 
   _ = require('lodash');
 
 /**
- * Create a  invoice
+ * Create a  delivery
  */
  exports.create = function(req, res) {
-  var invoice = new Invoice(req.body);
-    invoice.user = req.user;
-    invoice.client = req.client;
-    invoice.proforma = req.proforma;
-    invoice.save(function(err) {
+  var delivery = new Delivery(req.body);
+    delivery.user = req.user;
+    delivery.client = req.client;
+    delivery.proforma = req.proforma;
+    delivery.save(function(err) {
       if (err) {
         return res.status(400).send({
           message: errorHandler.getErrorMessage(err)
         });
       } else {
 
-        res.jsonp(invoice);
+        res.jsonp(delivery);
       }
     });    
   };
 
   /**
-   * Show the current invoice
+   * Show the current delivery
    */
 
   exports.read = function(req, res) {
-    res.jsonp(req.invoice);
+    res.jsonp(req.delivery);
   };
 
 /**
- * Update a invoice
+ * Update a delivery
  */
   exports.update = function(req, res) {
-    var invoice = req.invoice;
+    var delivery = req.delivery;
 
-    invoice = _.extend(invoice, req.body);
+    delivery = _.extend(delivery, req.body);
 
-    invoice.save(function(err) {
+    delivery.save(function(err) {
       if (err) {
         return res.status(400).send({
           message: errorHandler.getErrorMessage(err)
         });
       } else {
-        res.jsonp(invoice);
+        res.jsonp(delivery);
       }
     });
   };
 
 /**
- * Delete an invoice
+ * Delete an delivery
  */
 
   exports.delete = function(req, res) {
-    var invoice = req.invoice;
+    var delivery = req.delivery;
 
-    invoice.remove(function(err) {
+    delivery.remove(function(err) {
       if (err) {
         return res.status(400).send({
           message: errorHandler.getErrorMessage(err)
         });
       } else {
-        res.jsonp(invoice);
+        res.jsonp(delivery);
       }
     });
   };
 
 /**
- * List of invoice
+ * List of delivery
  */
 
   exports.list = function(req, res) {
-    Invoice.find({
+    Delivery.find({
       user: req.user
-    }).sort('-created').populate('user', 'displayName').exec(function(err, invoices) {
+    }).sort('-created').populate('user', 'displayName').exec(function(err, delieveries) {
       if (err) {
         return res.status(400).send({
           message: errorHandler.getErrorMessage(err)
         });
       } else {
-        res.jsonp(invoices);
+        res.jsonp(delieveries);
       }
     });
   };
 
 /**
- * invoice middlewares
+ * delivery middlewares
  */
 
-exports.uniqueInvoiceNumber = function(req, res, next){
-   var invoiceNo = req.body.invoiceNo;
-   Invoice.find().exec(function(err, invoices){
-    console.log('invoice', invoices);
-    _.forEach(invoices, function(invoice, key){
-      if(invoiceNo === invoice.invoiceNo){
+exports.uniqueDeliveryNumber = function(req, res, next){
+   var deliveryNo = req.body.deliveryNo;
+   Delivery.find().exec(function(err, delieveries){
+    console.log('delivery', delieveries);
+    _.forEach(delieveries, function(delivery, key){
+      if(deliveryNo === delivery.deliveryNo){
         console.log('error');
           return res.status(403).send({
-            message: 'Invoice Number Exist'
+            message: 'Delivery Number Exist'
           });
       }
     });
@@ -115,39 +115,39 @@ exports.uniqueInvoiceNumber = function(req, res, next){
 
  };
 
-  exports.invoiceById = function(req, res, next, id) {
-    Invoice.findById(id).populate('user', 'displayName').exec(function(err, invoice) {
+  exports.deliveryById = function(req, res, next, id) {
+    Delivery.findById(id).populate('user', 'displayName').exec(function(err, delivery) {
       if (err) return next(err);
-      if (!invoice) return next(new Error('Failed to load invoice ' + id));
-      req.invoice = invoice;
+      if (!delivery) return next(new Error('Failed to load delivery ' + id));
+      req.delivery = delivery;
       next();
     });
   };
 
-  exports.clientInvoiceById = function(req, res, next) {
+  exports.clientDeliveryById = function(req, res, next) {
     Client.findById(req.params.clientId).populate('user', 'displayName').exec(function(err, client) {
       if (err) return next(err);
-      if (!client) return next(new Error('Failed to load invoice '));
+      if (!client) return next(new Error('Failed to load delivery '));
       req.client = client;
       next();
     });
   };
 
-exports.clientProformaInvoiceById = function(req, res, next) {
+exports.clientProformaDeliveryById = function(req, res, next) {
     Pinvoice.findById(req.params.proformaId).populate('user', 'displayName').exec(function(err, proforma) {
       if (err) return next(err);
-      if (!proforma) return next(new Error('Failed to load invoice '));
+      if (!proforma) return next(new Error('Failed to load delivery '));
       req.proforma = proforma;
       next();
     });
 };
 
 /**
- * invoice authorization middleware
+ * delivery authorization middleware
  */
 
 exports.hasAuthorization = function(req, res, next) {
-  if (req.invoice.user.id !== req.user.id) {
+  if (req.delivery.user.id !== req.user.id) {
     return res.status(403).send('User is not authorized');
   }
   next();

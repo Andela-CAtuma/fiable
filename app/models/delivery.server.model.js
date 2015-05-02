@@ -7,28 +7,28 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 /**
-* Invoice Schema
+* Delivery Schema
 */
-var InvoiceSchema = new Schema({
-    invoiceNo: {
+var DeliverySchema = new Schema({
+    deliveryNo: {
         type: String,
         trim: true,
-        required: 'fill in Invoice Number',
-        unique: 'Invoice Number exist'
+        required: 'fill in delivery Number',
+        unique: 'Delivery Number '
     },
-    pon: {
-        type: String,
-        trim: true,
-        required: 'fill in Purchase Order Number'
+    created: {
+        type: Date,
+        default: Date.now
     },
     numero: {
         type: String,
         trim: true,
         required: 'fill in numero'
     },
-    created: {
-        type: Date,
-        default: Date.now
+   pon: {
+        type: String,
+        trim: true,
+        required: 'fill in Purchase Order Number'
     },
     proforma: {
         type: Schema.ObjectId,
@@ -45,4 +45,4 @@ var InvoiceSchema = new Schema({
 
 });
 
-mongoose.model('Invoice', InvoiceSchema);
+mongoose.model('Delivery', DeliverySchema);

@@ -89,6 +89,25 @@ exports.list = function(req, res) {
  * client middleware
  */
 
+exports.uniqueClientName = function(req, res, next){
+   var clientName = req.body.name;
+   console.log('name', clientName);
+   Client.find().exec(function(err, clients){
+    console.log('clients', clients);
+    _.forEach(clients, function(client, key){
+        console.log(client.name);
+      if(clientName === client.name){
+        console.log('error');
+          return res.status(400).send({
+            message: 'Client Name Exist'
+          });
+      }
+    });
+   });
+   next();
+
+ };
+
 exports.clientById = function(req, res, next, id) {
   console.log('welcome here');
   console.log('params', req.params.clientId);

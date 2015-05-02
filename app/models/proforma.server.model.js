@@ -7,13 +7,14 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 /**
- * Fiableop Schema
+ *Proforma Schema
  */
 var PinvoiceSchema = new Schema({
   quotationNo: {
     type: String,
     trim: true,
-    required: 'fill in Proforma Invoice Number'
+    required: 'fill in Proforma Invoice Number',
+    unique : 'Quotation Number exist'
   },
   numero: {
     type: String,
@@ -23,7 +24,7 @@ var PinvoiceSchema = new Schema({
   reference: {
     type: String
   },
-  quotation: [{
+  quotations: [{
 
      description: {
       type: String,
@@ -33,23 +34,23 @@ var PinvoiceSchema = new Schema({
     qtes: {
       type: Number,
       trim: true,
-      required: 'cannot be blank'
+      required: 'qtes cannot be blank'
     },
     unitPrice: {
       type: Number,
       trim: true,
-      required: 'cannot be blank'
+      required: 'unit price cannot be blank'
     },
     unitTotal: {
       type: Number,
       trim: true,
-      required: 'cannot be blank'
+      required: 'unit total cannot be blank'
     }
   }],
-  Total: {
+  total: {
       type: Number,
       trim: true,
-      required: 'cannot be blank'
+      required: 'total cannot be blank'
     },
   created: {
     type: Date,

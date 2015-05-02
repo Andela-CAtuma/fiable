@@ -12,7 +12,8 @@ var mongoose = require('mongoose'),
 var ClientSchema = new Schema({
   name: {
     type: String,
-    trim: true
+    trim: true,
+    unique: 'client name exist'
   },
   address:{
     type: String,

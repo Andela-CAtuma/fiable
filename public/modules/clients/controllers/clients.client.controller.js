@@ -3,6 +3,8 @@
 angular.module('clients').controller('ClientsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Clients', function ($scope, $stateParams, $location, Authentication, Clients) {
 	$scope.authentication = Authentication;
 	$scope.client = '';
+	$scope.toggle = true;
+	
 		
 // Create new clients
 	$scope.create = function() {
@@ -62,6 +64,11 @@ angular.module('clients').controller('ClientsController', ['$scope', '$statePara
 		$scope.clients = Clients.get({ 
 			clientId: $stateParams.clientId
 		});
+	};
+
+	$scope.toggler = function(){
+		$scope.toggle = false;
+		$scope.btnToggler = true;
 	};
 	}
 ]);

@@ -4,10 +4,12 @@ angular.module('clients')
 .controller('ProformaController', ['$scope', '$stateParams', '$location', 'Authentication', 'Clients', 'Proforma', function ($scope, $stateParams, $location, Authentication, Clients, Proforma) {
 	$scope.authentication = Authentication;
 	$scope.totalPrices = [];
+	$scope.toggle = true;
 		
 // Create new proforma
 
 	$scope.addRow = function(totalPrices) {
+		$scope.unitTotal = 0;
 		$scope.unitTotal = $scope.unitPrice * $scope.qtes;	
 		$scope.totalPrices.push($scope.unitTotal);
 		console.log($scope.totalPrices);
@@ -40,18 +42,14 @@ angular.module('clients')
 		
 		// Create new Fiableop object
 		var proforma = new Proforma ($scope.proforma);
-			console.log(proforma);
 			proforma.quotations = $scope.quotations;
 			proforma.total = $scope.total;
-			proforma.client = clientId
 	 		console.log('proforma', proforma);
 
-
-
 		// Redirect after save
-		proforma.$save(function(response) {
-          $location.path('clients/'+ clientId +'/proforma');
-			
+		proforma.$save({clientId: $stateParams.clientId},function(response) {
+			$location.path('clients/' + $stateParams.clientId + '/proforma');
+			console.log(response);
 			// Clear form fields
 			$scope.proforma = '';
 		}, function(errorResponse) {
@@ -87,15 +85,24 @@ angular.module('clients')
 
 	// Find a list of Proforma
 	$scope.find = function() {
-		$scope.proforma = Proforma.query();
+		$scope.proforma = Proforma.query({clientId: $stateParams.clientId});
+		console.log('list', $scope.proforma);
 	};
 
 	// Find existing Proforma
 	$scope.findOne = function() {
 		$scope.proforma = Proforma.get({ 
-			clientId: $stateParams.clientId
+			clientId: $stateParams.clientId,
+			proformaId: $stateParams.proformaId
 		});
+		$scope.client = Clients.get({clientId: $stateParams.clientId});
+		console.log('item', $scope.proforma);
+
 	};
-		
+
+	$scope.toggler = function() {
+		$scope.toggle = false;
+		$scope.btnToggler = true;
+	};
 }
 ]);

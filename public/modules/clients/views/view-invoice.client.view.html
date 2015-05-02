@@ -1,0 +1,67 @@
+<section data-ng-controller="InvoiceController" data-ng-init="findOne()" class="user-profile">
+<div class="row row-blocks pull-left">
+        <h2 class="fiable-heading">FIABLE OIL SERVICES</h2>
+        <p>BP. 1055 PORT-GENTIL<br> TEL: 07 15 54 75 <br> Carrefour BANCO </p>
+  </div>
+  <div class="row row-blocks pull-right">
+       <h4 class="client-heading">CLIENT</h4>
+        <p>{{client.name}}</p>
+        <p>{{client.address}}<br>{{client.location}}</p>
+  </div>
+		<div class="row row-blocks pull-center">
+    <div class="col-xs-offset-2 col-xs-8 col-md-offset-3 col-md-6">
+    <div data-ng-repeat="invoice in invoices">
+      <p class="heading">InvoiceNo: {{invoice.invoiceNo}}</p>
+      <br>
+      <table class="table" ts-wrapper>
+        <thead>
+          <tr>
+            <th ts-criteria="Name" ts-default>Numero</th>
+            <th>{{invoice.numero}}</th>
+          </tr>
+          <tr>
+            <th ts-criteria="location">Date</th>
+            <th>{{invoice.created  | date:'short'}}</th>
+          </tr>
+          <tr>
+            <th ts-criteria="E-Mail">P.O.N</th>
+            <th>{{invoice.pon}}</th>
+          </tr>
+        </thead>
+        <br>
+      </table>
+      </div>
+      <table class="table" data-ng-init="editable()">
+    <tr>
+        <th>Description
+        </th>
+        <th>QTE
+        </th>
+        <th>Prix Unitaire
+        </th>
+        <th>Unitaire Total
+        </th>
+    </tr>
+    <tr ng-repeat="proformea in proforma.quotations">
+        <td>{{proformea.description}}
+        </td>
+        <td>{{proformea.qtes}}
+        </td>
+        <td>{{proformea.unitPrice}}
+        </td>
+        <td>{{proformea.unitTotal}}
+        </td>
+    </tr>
+    <tr>
+        <th><tr></tr></th>
+    </tr>
+    <tr ><td>Total Cost</td><td>{{proforma.total}}
+        </td>
+    </tr>
+</table>
+    </div>
+    </div>
+	</div>
+   <p class="view-footer">BP. 1055 PORT-GENTIL TEL: 07 15 54 75 Carrefour BANCO </p>
+      <p id="footer-p">No Stat. 073401 Y </p>
+</section>
