@@ -1,52 +1,85 @@
 'use strict';
 
-angular.module('clients').controller('ProformaController', ['$scope', '$stateParams', '$location', 'Authentication', 'Clients', 'Proforma',  function ($scope, $stateParams, $location, Authentication, Clients, Proforma) {
+angular.module('clients')
+.controller('ProformaController', ['$scope', '$stateParams', '$location', 'Authentication', 'Clients', 'Proforma', function ($scope, $stateParams, $location, Authentication, Clients, Proforma) {
 	$scope.authentication = Authentication;
-	$scope.Proforma = '';
+	$scope.totalPrices = [];
 		
-// Create new clients
+// Create new proforma
+
+	$scope.addRow = function(totalPrices) {
+		$scope.unitTotal = $scope.unitPrice * $scope.qtes;	
+		$scope.totalPrices.push($scope.unitTotal);
+		console.log($scope.totalPrices);
+		$scope.quotations.push({ 'description':$scope.description, 'qtes': $scope.qtes, 'unitPrice':$scope.unitPrice, 'unitTotal': $scope.unitTotal});
+	 	console.log('quotations', $scope.quotations);
+		$scope.description ='';
+		$scope.qtes ='';
+		$scope.unitPrice ='';
+		$scope.calcTotal();
+	};
+
+	$scope.calcTotal = function(totalPrices) {
+		$scope.total = 0 ;
+		var totals = $scope.totalPrices ; 
+		console.log('bagg', totals);
+		angular.forEach(totals, function(total, key) {
+		$scope.total += totals[key];
+        });
+
+	};
+
+	$scope.editable = function() {
+	 $scope.quotations = [];
+
+	};
+
 	$scope.create = function() {
+   
+		var clientId = $stateParams.clientId;
 		
 		// Create new Fiableop object
-		var Proforma = new Proforma ({
-			name: this.client.name,
-			address: this.client.address,
-			location: this.client.location
-		});
+		var proforma = new Proforma ($scope.proforma);
+			console.log(proforma);
+			proforma.quotations = $scope.quotations;
+			proforma.total = $scope.total;
+			proforma.client = clientId
+	 		console.log('proforma', proforma);
+
+
 
 		// Redirect after save
-		Proforma.$save(function(response) {
-			$location.path('Proforma/' + response._id);
-
+		proforma.$save(function(response) {
+          $location.path('clients/'+ clientId +'/proforma');
+			
 			// Clear form fields
-			$scope.Proforma = '';
+			$scope.proforma = '';
 		}, function(errorResponse) {
 			$scope.error = errorResponse.data.message;
 		});
 	};
 
 	// Remove existing Proforma
-	$scope.remove = function( Proforma ) {
-		if ( Proforma ) { Proforma.$remove();
+	$scope.remove = function( proforma ) {
+		if ( proforma ) { Proforma.$remove();
 
 			for (var i in $scope.Proforma ) {
-				if ($scope.Proforma [i] === Proforma ) {
-					$scope.Proforma.splice(i, 1);
+				if ($scope.proforma [i] === proforma ) {
+					$scope.proforma.splice(i, 1);
 				}
 			}
 		} else {
-			$scope.Proforma.$remove(function() {
-				$location.path('Proforma');
+			$scope.proforma.$remove(function() {
+				// $location.path('proforma');
 			});
 		}
 	};
 
 	// Update existing Proforma
 	$scope.update = function() {
-		var Proforma = $scope.Proforma ;
-
+		var proforma = $scope.proforma ;
 		Proforma.$update(function() {
-			$location.path('Proforma/' + Proforma._id);
+			// $location.path('proforma/' + proforma._id);
 		}, function(errorResponse) {
 			$scope.error = errorResponse.data.message;
 		});
@@ -54,14 +87,15 @@ angular.module('clients').controller('ProformaController', ['$scope', '$statePar
 
 	// Find a list of Proforma
 	$scope.find = function() {
-		$scope.Proforma = Proforma.query();
+		$scope.proforma = Proforma.query();
 	};
 
 	// Find existing Proforma
 	$scope.findOne = function() {
-		$scope.Proforma = Proforma.get({ 
+		$scope.proforma = Proforma.get({ 
 			clientId: $stateParams.clientId
 		});
 	};
-	}
+		
+}
 ]);

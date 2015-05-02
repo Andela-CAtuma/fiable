@@ -120,7 +120,7 @@ exports.clientProforma = function(req, res) {
  * proforma middlewares
  */
 exports.proformaById = function(req, res, next, id) {
-  Pinvoice.findById(id).populate('user', 'displayName').exec(function(err, proforma) {
+  Pinvoice.findById(req.params.proformaId).populate('user', 'displayName').exec(function(err, proforma) {
     if (err) return next(err);
     if (!proforma) return next(new Error('Failed to load proforma ' + id));
     req.proforma = proforma;
