@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-	db: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/fiableo',
+	db: 'mongodb://heroku_app36518112:1tde94hj1l2pc1crfdeps0koqn@ds031872.mongolab.com:31872/heroku_app36518112',
 	assets: {
 		lib: {
 			css: [
