@@ -3,7 +3,7 @@
 module.exports = {
 	db: 'mongodb://localhost/fiableo-dev',
 	app: {
-		title: 'fiableo - Development Environment'
+		title: 'Fiable Oil Services | Port-Gentil, Gabon | Oil Serviceing &amp; Drilling Materals | Safety Materials, Marine Paints,Marine Fuel &amp; Gas Welding Materials'
 	},
 	facebook: {
 		clientID: process.env.FACEBOOK_ID || 'APP_ID',

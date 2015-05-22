@@ -32,4 +32,4 @@ app.listen(config.port);
 exports = module.exports = app;
 
 // Logging initialization
-console.log('FiableOps' + config.port);
+console.log('Fiable Oil Services App Loaded' + config.port);
