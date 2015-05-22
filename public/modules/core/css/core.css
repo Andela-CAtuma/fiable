@@ -541,6 +541,12 @@
   .container h1 {
     font-size: 1.6em;
   }
+
+  .logos{
+    min-width: 10%;
+    min-height: 10%;
+    padding: 10px 10px;
+  }
  
 }
 
