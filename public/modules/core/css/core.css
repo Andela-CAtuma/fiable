@@ -21,7 +21,7 @@ th {
   margin-top: 20px;
   position: relative;
   background-color: #FAFAFA;
-  font-family: 'Pathway Gothic One', sans-serif;
+  font-family: sans-serif;
   font-size: 1.3em;
 }
 .imgHome {
@@ -36,7 +36,7 @@ th {
   font-size: 1.8em;
 }
 a {
-  font-family: 'Pathway Gothic One', sans-serif;
+  font-family: sans-serif;
   font-weight: bolder;
   color: #337ab7 !important;
   font-size: 1.25em;
@@ -118,12 +118,12 @@ nav ul li {
   float: left;
   font-size: 1em;
   font-weight: bolder;
-  font-family: 'Pathway Gothic One', sans-serif;
+  font-family: sans-serif;
 }
 #serve .overview, #fiable .overview, #about .overview, #meet-the-team .overview {
   font-size: 20px;
   line-height: 36px;
-  font-family: 'Pathway Gothic One', sans-serif;
+  font-family: sans-serif;
   color: darkkhaki;
 }
 .container h1, .container .row h1 {
@@ -135,7 +135,7 @@ nav ul li {
   font-size: 1.3em;
   font-weight: bold;
   text-align: center;
-  font-family: 'Pathway Gothic One', sans-serif;
+  font-family: sans-serif;
 }
 #client-logos-title {
   color: #000;
@@ -183,14 +183,10 @@ nav ul li {
   font-size: 28px;
   line-height: 35px;
   margin-top: 19%;
-  ;
-  font-family: 'Pathway }
- font-weight: bolderGothic One', sans-serif;
-
 }
 .latest-quotes blockquote {
   color: #333333;
-  font-family: 'Pathway Gothic One', sans-serif;
+  font-family: sans-serif;
 }
 blockquote {
   /*margin: 0 0 20px;*/
@@ -202,7 +198,7 @@ blockquote, blockquote p {
   line-height: 24px;
   color: #000;
   font-style: italic;
-  font-family: 'Pathway Gothic One', sans-serif;
+  font-family: sans-serif;
 }
 blockquote, q {
   quotes: none;
@@ -231,7 +227,7 @@ p {
 }
 body p {
   color: #333333;
-  font-family: 'Pathway Gothic One', sans-serif;
+  font-family: sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: normal;
@@ -317,7 +313,7 @@ h1, h2, h3, h4, h5, h6 {
   color: grey;
   font-weight: bolder;
   text-transform: uppercase;
-  font-family: 'Pathway Gothic One', sans-serif;
+  font-family: sans-serif;
 }
 #section-divider-1, #section-divider-2, #section-divider-3, #section-divider-4, #section-divider-0 {
   min-width: 100%;
@@ -339,8 +335,7 @@ body {
   min-width: 100% !important;
   color: #444;
   margin: 0 auto;
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-size-adjust: 100%;
+ 
 }
 .container:after {
   content: "\0020";
@@ -428,12 +423,12 @@ ol, ul {
     
     padding: 2em;
     font-weight: bold;
-    font-family: 'Pathway Gothic One', sans-serif;
+    font-family: sans-serif;
   }
   #serve .overview, #fiable .overview, #about .overview, #meet-the-team .overview {
     font-size: 1.3em;
     line-height: 16px;
-    font-family: 'Pathway Gothic One', sans-serif;
+    font-family: sans-serif;
     color: darkkhaki;
   }
   #section-divider-1, #section-divider-2, #section-divider-3, #section-divider-4, #section-divider-0 {
@@ -462,14 +457,14 @@ ol, ul {
     line-height: 17px;
     margin-top: 20%;
     font-weight: bolder;
-    font-family: 'Pathway Gothic One', sans-serif;
+    font-family: sans-serif;
   }
   blockquote, blockquote p {
     font-size: 0.6em;
     line-height: 0.4em;
     color: #000;
     font-style: italic;
-    font-family: 'Pathway Gothic One', sans-serif;
+    font-family: sans-serif;
   }
   h2 {
     font-size: 0.8em;
@@ -487,7 +482,7 @@ ol, ul {
   }
   body p {
     color: #333333;
-    font-family: 'Pathway Gothic One', sans-serif;
+    font-family: sans-serif;
     font-size: 0.6em;
     font-style: normal;
     font-weight: normal;
@@ -496,7 +491,7 @@ ol, ul {
     margin-top: 10px;
     position: relative;
     background-color: #FAFAFA;
-    font-family: 'Pathway Gothic One', sans-serif;
+    font-family: sans-serif;
     font-size: 0.7em;
   }
   .signUpIn, .profile-heading {
@@ -507,7 +502,7 @@ ol, ul {
     font-size: 1.1em;
     font-weight: bold;
     text-align: center;
-    font-family: 'Pathway Gothic One', sans-serif;
+    font-family: sans-serif;
   }
   .container h1 {
     font-size: 1.6em;
